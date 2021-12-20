@@ -10,12 +10,61 @@ import {
 
 function TodoItem({ title, status, onDelete, id, onToggle }) {
   return (
-    <div style={{ display: "flex", padding: "1rem", gap: "2rem" }}>
-      <div>{title}</div>
-      <div>{`${status}`}</div>
-      <button onClick={() => onDelete(id)}>Delete</button>
-      <button onClick={() => onToggle(id)}>Toggle Status</button>
-    </div>
+    <>
+      <div
+        style={{
+          display: "flex",
+          padding: "1rem",
+          gap: "2rem",
+          border: "1px solid gray",
+          wrap: "wrap",
+          paddingLeft: "30%"
+          // flexDirection: "column"
+        }}
+      >
+        <div
+          style={{
+            border: "1px solid gray",
+            padding: "5px",
+            borderRadius: "10px",
+            background: "greenyellow"
+          }}
+        >
+          {title}
+        </div>
+        <div
+          style={{
+            border: "1px solid gray",
+            padding: "5px",
+            borderRadius: "10px",
+            background: "greenyellow"
+          }}
+        >{`${status}`}</div>
+        <button
+          style={{
+            border: "1px solid gray",
+            padding: "10px",
+            borderRadius: "10px",
+            background: "greenyellow"
+          }}
+          onClick={() => onDelete(id)}
+        >
+          Delete
+        </button>
+        <button
+          style={{
+            border: "1px solid gray",
+            padding: "10px",
+            borderRadius: "10px",
+            background: "greenyellow"
+          }}
+          onClick={() => onToggle(id)}
+        >
+          Toggle Status
+        </button>
+      </div>
+      <br />
+    </>
   );
 }
 
@@ -59,7 +108,14 @@ function TodoList() {
   };
 
   return (
-    <div>
+    <div
+      style={{
+        background: "cornsilk",
+        margin: "auto",
+        marginTop: "20px",
+        fontSize: "20px"
+      }}
+    >
       {isLoading && <h3>Loading...</h3>}
       {isError && <h3> Something went wrong!</h3>}
       {todos.map((item) => (

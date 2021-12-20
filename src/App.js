@@ -9,8 +9,9 @@ export default function App() {
 
   return isAuth ? (
     <div className="App">
-      <h3>User Token: {token} </h3>
-      <h1>Todo</h1>
+      <h1>Welcome to the Dashboard</h1>
+      <h3>User ID: {token} </h3>
+      <h1>Todo-List</h1>
       <Todo />
     </div>
   ) : (
