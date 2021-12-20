@@ -27,6 +27,8 @@ export const getTodosFailure = () => {
   };
 };
 
+// actionCreators
+// type is mandatory, string
 export const addTodo = ({ title, status, id }) => {
   return {
     type: appConstants.ADD_TODO,

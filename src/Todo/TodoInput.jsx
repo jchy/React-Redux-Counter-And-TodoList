@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const TodoInput = ({ onAdd }) => {
+function TodoInput({ onAdd }) {
   const [state, setState] = useState("");
 
   return (
@@ -8,9 +8,8 @@ const TodoInput = ({ onAdd }) => {
       <input
         value={state}
         onChange={(e) => setState(e.target.value)}
-        placeholder="...add task"
+        placeholder="Add something"
       />
-
       <button
         onClick={() => {
           onAdd(state);
@@ -21,6 +20,6 @@ const TodoInput = ({ onAdd }) => {
       </button>
     </div>
   );
-};
+}
 
 export default TodoInput;

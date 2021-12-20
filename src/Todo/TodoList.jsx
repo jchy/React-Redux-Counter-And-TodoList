@@ -1,34 +1,33 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
-
 import {
   getTodosFailure,
   getTodosRequest,
   getTodosSuccess,
   removeTodo,
   toggleTodo
-} from "../TodoRedux/app/action";
+} from "../redux/app/action";
 
-const TodoItem = ({ title, status, onDelete, id, onToggle }) => {
+function TodoItem({ title, status, onDelete, id, onToggle }) {
   return (
-    <div>
+    <div style={{ display: "flex", padding: "1rem", gap: "2rem" }}>
       <div>{title}</div>
       <div>{`${status}`}</div>
-      <button onClick={() => onDelete(id)}>DELETE</button>
-      <button onClick={() => onToggle(id)}>TOGGLE</button>
+      <button onClick={() => onDelete(id)}>Delete</button>
+      <button onClick={() => onToggle(id)}>Toggle Status</button>
     </div>
   );
-};
+}
 
-const TodoList = () => {
+function TodoList() {
   const { todos, isLoading, isError } = useSelector(
     (state) => state.app,
     shallowEqual
   );
-
   const dispatch = useDispatch();
 
   const getTodos = () => {
+    // pre fetch
     const requestAction = getTodosRequest();
     dispatch(requestAction);
     return fetch("https://json-server-mocker-masai.herokuapp.com/tasks")
@@ -39,6 +38,7 @@ const TodoList = () => {
         dispatch(successAction);
       })
       .catch((res) => {
+        // failure
         const failureAction = getTodosFailure();
         dispatch(failureAction);
       });
@@ -60,8 +60,8 @@ const TodoList = () => {
 
   return (
     <div>
-      {isLoading && <h2>Loading...</h2>}
-      {isError && <h2>404 : Something went wrong!</h2>}
+      {isLoading && <h3>Loading...</h3>}
+      {isError && <h3> Something went wrong!</h3>}
       {todos.map((item) => (
         <TodoItem
           key={item.id}
@@ -72,6 +72,6 @@ const TodoList = () => {
       ))}
     </div>
   );
-};
+}
 
 export default TodoList;

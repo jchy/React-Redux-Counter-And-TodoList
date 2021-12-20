@@ -1,3 +1,4 @@
+// constants
 export const appConstants = {
   GET_TODO_REQUEST: "GET_TODO_REQUEST",
   GET_TODO_SUCCESS: "GET_TODO_SUCCESS",
